@@ -14,18 +14,18 @@ class Card(val value:Int, val suit:Int){
 
     val valueName:String get() = when (value){
         1->"Ace"
-        2->"Two"
-        3->"Three"
-        4->"Four"
-        5->"Five"
-        6->"Six"
-        7->"Seven"
-        8->"Eight"
-        9->"Nine"
-        10->"Ten"
+        in 2..10->value.toString()
         11->"Jack"
         12->"Queen"
         13->"King"
+        else->throw IllegalStateException()
+    }
+
+    val name:String get() = "$valueName of $suitName"
+
+    val points:Int get() = when(value){
+        in 1..9->value
+        in 10..13->10
         else->throw IllegalStateException()
     }
 }
